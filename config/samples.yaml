@@ -1,0 +1,3 @@
+samples:
+    sampleName1: /directory/to/sample/file_1.tsv
+    sampleName2: /directory/to/sample/file_2.tsv
