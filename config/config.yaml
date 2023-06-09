@@ -1,1 +1,1 @@
-BSmooth_fit: /juno/work/greenbaum/users/ahunos/methyl_SPECTRUM/scripts/bsmooth_snakemake/bsmooth_rds_files_snakemake.r
+Rscript_config: scripts/Rscript_file.r
