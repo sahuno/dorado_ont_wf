@@ -1,0 +1,25 @@
+{
+	"__default__" :
+	{
+	  	"queue" : "general",
+		"mem": "16",
+		"threads" : 1,
+		"time" : "2:00",
+		"extra" : "",
+		"latency": "10"
+	},
+	"splitChrom" :
+	{
+	  	"queue" : "general",
+		"mem": "32",
+		"threads" : 2,
+		"time" : "6:00"
+	},
+	"qc_and_DMR" :
+	{
+	  	"queue" : "general",
+		"mem": "32",
+		"threads" : 2,
+		"time" : "6:00"
+	}
+}
