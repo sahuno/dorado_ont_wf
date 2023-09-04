@@ -36,3 +36,8 @@ snakemake --jobname 's.{jobid}.{rulename}' \
 	--cluster-config config/cluster.json \
 	--cluster "bsub -q {cluster.queue} -n {cluster.threads} -W {cluster.time} -M{cluster.mem} -R\"span[hosts=1] select[mem>{cluster.mem}] rusage[mem={cluster.mem}]\" {cluster.extra} -o out.txt -e err.txt" 
 
+## notes on run time
+1. pod5 conversion
+you dont need lots of memory for pod5 conversion. Max mem=4GB used. Rather increase nthreads=64, nGPUs=4
+
+2. dorado 
