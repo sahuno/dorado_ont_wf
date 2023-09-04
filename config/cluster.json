@@ -1,25 +1,26 @@
 {
 	"__default__" :
 	{
-	  	"queue" : "general",
-		"mem": "16",
-		"threads" : 1,
-		"time" : "2:00",
+	  	"queue" : "cpuqueue",
+		"mem": "64",
+		"threads" : 32,
+		"time" : "5:00",
 		"extra" : "",
 		"latency": "10"
 	},
-	"splitChrom" :
+	"pod5" :
 	{
-	  	"queue" : "general",
-		"mem": "32",
-		"threads" : 2,
-		"time" : "6:00"
+	  	"queue" : "gpuqueue",
+		"mem": "64",
+		"threads" : 24,
+		"time" : "5:00",
+		"extra" : "-gpu num=2"
 	},
-	"qc_and_DMR" :
+	"mod_bases" :
 	{
-	  	"queue" : "general",
-		"mem": "32",
-		"threads" : 2,
+	  	"queue" : "cpuqueue",
+		"mem": "64",
+		"threads" : 32,
 		"time" : "6:00"
 	}
 }

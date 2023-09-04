@@ -1,1 +1,2 @@
-Rscript_config: scripts/Rscript_file.r
+dorado: scripts/dorado_ont.sh
+pod5_env: /lila/data/greenbaum/users/ahunos/apps/dorado_ont_wf/config/pod5.yaml

@@ -3,6 +3,7 @@
 # Run snakemake
 snakemake --jobname 's.{jobid}.{rulename}' \
 	--snakefile Snakefile.smk \
+	--use-conda \
 	--keep-going \
 	--reason \
 	--printshellcmds \
@@ -10,5 +11,5 @@ snakemake --jobname 's.{jobid}.{rulename}' \
 	--rerun-incomplete \
 	--stats snakemake_$(date +"%Y%m%d_%H%M%S").stats \
 	-j 5000 \
-	--cluster-config cluster.json \
+	--cluster-config config/cluster.json \
 	--cluster "bsub -q {cluster.queue} -n {cluster.threads} -W {cluster.time} -M{cluster.mem} -R\"span[hosts=1] select[mem>{cluster.mem}] rusage[mem={cluster.mem}]\" {cluster.extra} -o out.txt -e err.txt"
