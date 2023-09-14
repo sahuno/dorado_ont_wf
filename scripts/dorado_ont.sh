@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 module load dorado
 module load modkit
 module load samtools

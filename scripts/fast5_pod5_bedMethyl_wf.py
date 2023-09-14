@@ -133,3 +133,28 @@ for sample in sample_small:
         fh.writelines(f'modkit pileup {output}/{sample}_5mCG_5hmCG_calls_sorted.bam {output}/{sample}_CpG_5mC_bed --cpg --ref {reference_genome} --ignore h\n')
         fh.writelines(f'modkit pileup {output}/{sample}_5mCG_5hmCG_calls_sorted.bam {output}/{sample}_CpG_5mC_5hmC_merged_bed --cpg --ref {reference_genome} --combine-mods\n')
     os.system(f'bsub < {dorado_job_file}')
+
+#     echo ""seq summary...""
+# dorado summary /lila/data/greenbaum/users/ahunos/TRI_EPI_DIVYA/mod_bases/D-A-2/D-A-2_5mCG_5hmCG_calls.bam > /lila/data/greenbaum/users/ahunos/TRI_EPI_DIVYA/mod_bases/D-A-2/D-A-2_5mCG_5hmCG_calls_seq_summary.txt
+
+# dorado basecaller /lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0 \
+# /data/greenbaum/users/ahunos/TRI_EPI_DIVYA/pod5/D-A-2/ \
+# --reference /data/greenbaum/database/mm10/mm10.fa \
+# --modified-bases 5mCG_5hmCG --verbose > /data/greenbaum/users/ahunos/TRI_EPI_DIVYA/mod_bases/D-A-2/D-A-2_5mCG_5hmCG_calls.bam
+
+# start=`date +%s`
+# stuff
+# end=`date +%s`
+
+# runtime=$((end-start))
+
+
+#get run time
+# start=`date +%s`
+# echo ""running dorado...""
+# dorado basecaller /lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0 \
+# /data/greenbaum/users/ahunos/TRI_EPI_DIVYA/pod5/D-A-2/ --reference /data/greenbaum/database/mm10/mm10.fa --modified-bases 5mCG_5hmCG --verbose > /data/greenbaum/users/ahunos/TRI_EPI_DIVYA/mod_bases/D-A-2/D-A-2_5mCG_5hmCG_calls.bam
+# end=`date +%s`
+
+# runtime=$((end-start))
+# echo "dorado runtime is $runtime"
