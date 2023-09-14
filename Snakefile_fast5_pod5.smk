@@ -1,5 +1,5 @@
 configfile: "config/config.yaml"
-configfile: "config/samples.yaml"
+configfile: "config/samples_fast5_2_pod5.yaml"
 #$ conda env export -n pod5 > /lila/data/greenbaum/users/ahunos/apps/dorado_ont_wf/config/pod5.yaml
 
 
@@ -14,16 +14,15 @@ rule pod5:
         "results/{rule}/{samples}/{samples}.pod5"
     log:
       "logs/{rule}/{samples}/{samples}.log"
-    conda: config["pod5_env"]
+    # conda: config["pod5_env"]
     shell:
         """ 
 pod5 convert from_fast5 {input} --output {output} --force-overwrite 2> {log}
         """
 
-
 # this runs ok
-# snakemake -s Snakefile.smk --cores 12 --forcerun -np #dry run with cores
-# nohup snakemake -s Snakefile.smk --latency-wait 60 --restart-times 2 --keep-going --forceall --cluster "bsub -J {rule} -R "rusage[mem=32]" -W 5:00 -n 12 -o logs/cluster/{rule}.%J.out -e logs/cluster/{rule}.%J.err" -j 3 &
+# snakemake -s Snakefile_fast5_pod5.smk --cores 12 --forcerun -np #dry run with cores
+# nohup snakemake -s Snakefile_fast5_pod5.smk --latency-wait 60 --restart-times 2 --keep-going --forceall --cluster "bsub -J {rule} -R "rusage[mem=32]" -W 5:00 -n 12 -o logs/cluster/{rule}.%J.out -e logs/cluster/{rule}.%J.err" -j 3 &
 # sh run_snakefile.sh 
 
 #conda env create -f environment.yml
