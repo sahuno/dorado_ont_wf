@@ -1,0 +1,4 @@
+samples:
+    Sample_14607_2_1: /data/greenbaum/projects/oxford_nanopore/Project_14607/fast5/Project_14607/14607_2_1_rerun/20230531_1615_1A_PAQ05138_195173eb/fast5_pass/
+    # D-A-1: /data/greenbaum/projects/ONT/projects/RERUN/TRI_EPIGENETIC/organized/FAST5/D-A-1
+    # sampleName2: /directory/to/sample/file_2.tsv
