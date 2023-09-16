@@ -14,7 +14,7 @@ $cd dorado_ont_wf
 ## 2 step process
 Step 1 (optional). convert .fast5 to .pod5 files
 a. edit `samples_fast5_2_pod5.yaml` with paths to fast5
-b. lunch program with `$ sh run_snakefile_pod5.sh`
+b. lunch program with `$ sh run_Snakefile_fast5_pod5.sh`
 
 Step 2. modified base calling with dorado on .pod5 files and subsequent methylation extraction with modkit
 
