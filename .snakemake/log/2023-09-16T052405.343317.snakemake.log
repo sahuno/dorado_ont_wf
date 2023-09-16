@@ -1,0 +1,44 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 5000
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+pod5         2              1              1
+total        3              1              1
+
+Select jobs to execute...
+
+[Sat Sep 16 05:24:06 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-1
+    output: results/pod5/D-0-1/D-0-1.pod5
+    log: logs/pod5/D-0-1/D-0-1.log
+    jobid: 1
+    reason: Missing output files: results/pod5/D-0-1/D-0-1.pod5
+    wildcards: rule=pod5, samples=D-0-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-1 --output results/pod5/D-0-1/D-0-1.pod5 --force-overwrite 2> logs/pod5/D-0-1/D-0-1.log
+        
+Submitted job 1 with external jobid 'Job <78474816> is submitted to queue <general>.'.
+
+[Sat Sep 16 05:24:06 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-2
+    output: results/pod5/D-0-2/D-0-2.pod5
+    log: logs/pod5/D-0-2/D-0-2.log
+    jobid: 2
+    reason: Missing output files: results/pod5/D-0-2/D-0-2.pod5
+    wildcards: rule=pod5, samples=D-0-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-2 --output results/pod5/D-0-2/D-0-2.pod5 --force-overwrite 2> logs/pod5/D-0-2/D-0-2.log
+        
+Submitted job 2 with external jobid 'Job <78474817> is submitted to queue <general>.'.
+Terminating processes on user request, this might take some time.
+No --cluster-cancel given. Will exit after finishing currently running jobs.
+Cancelling snakemake on user request.

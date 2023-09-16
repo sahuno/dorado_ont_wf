@@ -7,10 +7,32 @@
 ### first activate conda
 $ conda activate snakemake #we assume there's conda smk environment already installed on your device
 
-### enter the directory of the snakemake
+### enter the directory of the repository
 $cd dorado_ont_wf
 
-### test run with 
+
+## 2 step process
+Step 1 (optional). convert .fast5 to .pod5 files
+a. edit `samples_fast5_2_pod5.yaml` with paths to fast5
+b. lunch program with `$ sh run_snakefile_pod5.sh`
+
+Step 2. modified base calling with dorado on .pod5 files and subsequent methylation extraction with modkit
+
+## notes on run time
+1. pod5 conversion
+you dont need lots of memory for pod5 conversion. Max mem=4GB used. Rather increase nthreads=64, nGPUs=4
+
+
+
+
+
+
+
+
+
+####################################################################################
+# note to self
+### test run with ``
 $snakemake -s Snakefile.smk -np #target filename may change
 $snakemake -s Snakefile.smk --cores 12 --forcerun -np #dry run with cores
 
@@ -36,8 +58,3 @@ snakemake --jobname 's.{jobid}.{rulename}' \
 	--cluster-config config/cluster.json \
 	--cluster "bsub -q {cluster.queue} -n {cluster.threads} -W {cluster.time} -M{cluster.mem} -R\"span[hosts=1] select[mem>{cluster.mem}] rusage[mem={cluster.mem}]\" {cluster.extra} -o out.txt -e err.txt" 
 
-## notes on run time
-1. pod5 conversion
-you dont need lots of memory for pod5 conversion. Max mem=4GB used. Rather increase nthreads=64, nGPUs=4
-
-2. dorado 

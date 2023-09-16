@@ -1,0 +1,329 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cluster nodes: 5000
+Job stats:
+job      count    min threads    max threads
+-----  -------  -------------  -------------
+all          1              1              1
+pod5        21              1              1
+total       22              1              1
+
+Select jobs to execute...
+
+[Sat Sep 16 05:21:01 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-1
+    output: results/pod5/D-SC-1/D-SC-1.pod5
+    log: logs/pod5/D-SC-1/D-SC-1.log
+    jobid: 19
+    reason: Missing output files: results/pod5/D-SC-1/D-SC-1.pod5
+    wildcards: rule=pod5, samples=D-SC-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-1 --output results/pod5/D-SC-1/D-SC-1.pod5 --force-overwrite 2> logs/pod5/D-SC-1/D-SC-1.log
+        
+Submitted job 19 with external jobid 'Job <78474761> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:01 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-2
+    output: results/pod5/D-C-2/D-C-2.pod5
+    log: logs/pod5/D-C-2/D-C-2.log
+    jobid: 8
+    reason: Missing output files: results/pod5/D-C-2/D-C-2.pod5
+    wildcards: rule=pod5, samples=D-C-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-2 --output results/pod5/D-C-2/D-C-2.pod5 --force-overwrite 2> logs/pod5/D-C-2/D-C-2.log
+        
+Submitted job 8 with external jobid 'Job <78474762> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:01 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-1
+    output: results/pod5/D-A-1/D-A-1.pod5
+    log: logs/pod5/D-A-1/D-A-1.log
+    jobid: 4
+    reason: Missing output files: results/pod5/D-A-1/D-A-1.pod5
+    wildcards: rule=pod5, samples=D-A-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-1 --output results/pod5/D-A-1/D-A-1.pod5 --force-overwrite 2> logs/pod5/D-A-1/D-A-1.log
+        
+Submitted job 4 with external jobid 'Job <78474763> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:02 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-2
+    output: results/pod5/D-SC-2/D-SC-2.pod5
+    log: logs/pod5/D-SC-2/D-SC-2.log
+    jobid: 20
+    reason: Missing output files: results/pod5/D-SC-2/D-SC-2.pod5
+    wildcards: rule=pod5, samples=D-SC-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-2 --output results/pod5/D-SC-2/D-SC-2.pod5 --force-overwrite 2> logs/pod5/D-SC-2/D-SC-2.log
+        
+Submitted job 20 with external jobid 'Job <78474764> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:02 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-1
+    output: results/pod5/D-Q-1/D-Q-1.pod5
+    log: logs/pod5/D-Q-1/D-Q-1.log
+    jobid: 10
+    reason: Missing output files: results/pod5/D-Q-1/D-Q-1.pod5
+    wildcards: rule=pod5, samples=D-Q-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-1 --output results/pod5/D-Q-1/D-Q-1.pod5 --force-overwrite 2> logs/pod5/D-Q-1/D-Q-1.log
+        
+Submitted job 10 with external jobid 'Job <78474765> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:02 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-2
+    output: results/pod5/D-A-2/D-A-2.pod5
+    log: logs/pod5/D-A-2/D-A-2.log
+    jobid: 5
+    reason: Missing output files: results/pod5/D-A-2/D-A-2.pod5
+    wildcards: rule=pod5, samples=D-A-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-2 --output results/pod5/D-A-2/D-A-2.pod5 --force-overwrite 2> logs/pod5/D-A-2/D-A-2.log
+        
+Submitted job 5 with external jobid 'Job <78474766> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:03 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-3
+    output: results/pod5/D-SC-3/D-SC-3.pod5
+    log: logs/pod5/D-SC-3/D-SC-3.log
+    jobid: 21
+    reason: Missing output files: results/pod5/D-SC-3/D-SC-3.pod5
+    wildcards: rule=pod5, samples=D-SC-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-SC-3 --output results/pod5/D-SC-3/D-SC-3.pod5 --force-overwrite 2> logs/pod5/D-SC-3/D-SC-3.log
+        
+Submitted job 21 with external jobid 'Job <78474767> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:03 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-3
+    output: results/pod5/D-QC-3/D-QC-3.pod5
+    log: logs/pod5/D-QC-3/D-QC-3.log
+    jobid: 15
+    reason: Missing output files: results/pod5/D-QC-3/D-QC-3.pod5
+    wildcards: rule=pod5, samples=D-QC-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-3 --output results/pod5/D-QC-3/D-QC-3.pod5 --force-overwrite 2> logs/pod5/D-QC-3/D-QC-3.log
+        
+Submitted job 15 with external jobid 'Job <78474768> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:03 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-2
+    output: results/pod5/D-QC-2/D-QC-2.pod5
+    log: logs/pod5/D-QC-2/D-QC-2.log
+    jobid: 14
+    reason: Missing output files: results/pod5/D-QC-2/D-QC-2.pod5
+    wildcards: rule=pod5, samples=D-QC-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-2 --output results/pod5/D-QC-2/D-QC-2.pod5 --force-overwrite 2> logs/pod5/D-QC-2/D-QC-2.log
+        
+Submitted job 14 with external jobid 'Job <78474769> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:03 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-1
+    output: results/pod5/D-0-1/D-0-1.pod5
+    log: logs/pod5/D-0-1/D-0-1.log
+    jobid: 1
+    reason: Missing output files: results/pod5/D-0-1/D-0-1.pod5
+    wildcards: rule=pod5, samples=D-0-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-1 --output results/pod5/D-0-1/D-0-1.pod5 --force-overwrite 2> logs/pod5/D-0-1/D-0-1.log
+        
+Submitted job 1 with external jobid 'Job <78474770> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:04 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-1
+    output: results/pod5/D-S-1/D-S-1.pod5
+    log: logs/pod5/D-S-1/D-S-1.log
+    jobid: 16
+    reason: Missing output files: results/pod5/D-S-1/D-S-1.pod5
+    wildcards: rule=pod5, samples=D-S-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-1 --output results/pod5/D-S-1/D-S-1.pod5 --force-overwrite 2> logs/pod5/D-S-1/D-S-1.log
+        
+Submitted job 16 with external jobid 'Job <78474771> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:04 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-1
+    output: results/pod5/D-QC-1/D-QC-1.pod5
+    log: logs/pod5/D-QC-1/D-QC-1.log
+    jobid: 13
+    reason: Missing output files: results/pod5/D-QC-1/D-QC-1.pod5
+    wildcards: rule=pod5, samples=D-QC-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-QC-1 --output results/pod5/D-QC-1/D-QC-1.pod5 --force-overwrite 2> logs/pod5/D-QC-1/D-QC-1.log
+        
+Submitted job 13 with external jobid 'Job <78474772> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:04 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-3
+    output: results/pod5/D-C-3/D-C-3.pod5
+    log: logs/pod5/D-C-3/D-C-3.log
+    jobid: 9
+    reason: Missing output files: results/pod5/D-C-3/D-C-3.pod5
+    wildcards: rule=pod5, samples=D-C-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-3 --output results/pod5/D-C-3/D-C-3.pod5 --force-overwrite 2> logs/pod5/D-C-3/D-C-3.log
+        
+Submitted job 9 with external jobid 'Job <78474773> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:04 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-2
+    output: results/pod5/D-S-2/D-S-2.pod5
+    log: logs/pod5/D-S-2/D-S-2.log
+    jobid: 17
+    reason: Missing output files: results/pod5/D-S-2/D-S-2.pod5
+    wildcards: rule=pod5, samples=D-S-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-2 --output results/pod5/D-S-2/D-S-2.pod5 --force-overwrite 2> logs/pod5/D-S-2/D-S-2.log
+        
+Submitted job 17 with external jobid 'Job <78474774> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:04 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-3
+    output: results/pod5/D-A-3/D-A-3.pod5
+    log: logs/pod5/D-A-3/D-A-3.log
+    jobid: 6
+    reason: Missing output files: results/pod5/D-A-3/D-A-3.pod5
+    wildcards: rule=pod5, samples=D-A-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-A-3 --output results/pod5/D-A-3/D-A-3.pod5 --force-overwrite 2> logs/pod5/D-A-3/D-A-3.log
+        
+Submitted job 6 with external jobid 'Job <78474775> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:05 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-2
+    output: results/pod5/D-0-2/D-0-2.pod5
+    log: logs/pod5/D-0-2/D-0-2.log
+    jobid: 2
+    reason: Missing output files: results/pod5/D-0-2/D-0-2.pod5
+    wildcards: rule=pod5, samples=D-0-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-2 --output results/pod5/D-0-2/D-0-2.pod5 --force-overwrite 2> logs/pod5/D-0-2/D-0-2.log
+        
+Submitted job 2 with external jobid 'Job <78474776> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:05 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-3
+    output: results/pod5/D-S-3/D-S-3.pod5
+    log: logs/pod5/D-S-3/D-S-3.log
+    jobid: 18
+    reason: Missing output files: results/pod5/D-S-3/D-S-3.pod5
+    wildcards: rule=pod5, samples=D-S-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-S-3 --output results/pod5/D-S-3/D-S-3.pod5 --force-overwrite 2> logs/pod5/D-S-3/D-S-3.log
+        
+Submitted job 18 with external jobid 'Job <78474777> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:05 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-2
+    output: results/pod5/D-Q-2/D-Q-2.pod5
+    log: logs/pod5/D-Q-2/D-Q-2.log
+    jobid: 11
+    reason: Missing output files: results/pod5/D-Q-2/D-Q-2.pod5
+    wildcards: rule=pod5, samples=D-Q-2
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-2 --output results/pod5/D-Q-2/D-Q-2.pod5 --force-overwrite 2> logs/pod5/D-Q-2/D-Q-2.log
+        
+Submitted job 11 with external jobid 'Job <78474778> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:05 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-3
+    output: results/pod5/D-0-3/D-0-3.pod5
+    log: logs/pod5/D-0-3/D-0-3.log
+    jobid: 3
+    reason: Missing output files: results/pod5/D-0-3/D-0-3.pod5
+    wildcards: rule=pod5, samples=D-0-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-0-3 --output results/pod5/D-0-3/D-0-3.pod5 --force-overwrite 2> logs/pod5/D-0-3/D-0-3.log
+        
+Submitted job 3 with external jobid 'Job <78474779> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:05 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-1
+    output: results/pod5/D-C-1/D-C-1.pod5
+    log: logs/pod5/D-C-1/D-C-1.log
+    jobid: 7
+    reason: Missing output files: results/pod5/D-C-1/D-C-1.pod5
+    wildcards: rule=pod5, samples=D-C-1
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-C-1 --output results/pod5/D-C-1/D-C-1.pod5 --force-overwrite 2> logs/pod5/D-C-1/D-C-1.log
+        
+Submitted job 7 with external jobid 'Job <78474780> is submitted to queue <gpuqueue>.'.
+
+[Sat Sep 16 05:21:06 2023]
+rule pod5:
+    input: /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-3
+    output: results/pod5/D-Q-3/D-Q-3.pod5
+    log: logs/pod5/D-Q-3/D-Q-3.log
+    jobid: 12
+    reason: Missing output files: results/pod5/D-Q-3/D-Q-3.pod5
+    wildcards: rule=pod5, samples=D-Q-3
+    resources: mem_mb=1000, mem_mib=954, disk_mb=1000, disk_mib=954, tmpdir=<TBD>
+
+ 
+pod5 convert from_fast5 /work/greenbaum/projects/ont_pipeline/projects/TRI_EPIGENETIC/organized/FAST5/D-Q-3 --output results/pod5/D-Q-3/D-Q-3.pod5 --force-overwrite 2> logs/pod5/D-Q-3/D-Q-3.log
+        
+Submitted job 12 with external jobid 'Job <78474781> is submitted to queue <gpuqueue>.'.
+Terminating processes on user request, this might take some time.
+No --cluster-cancel given. Will exit after finishing currently running jobs.
+Cancelling snakemake on user request.
