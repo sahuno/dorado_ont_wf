@@ -55,7 +55,7 @@ echo ""indexing..""
 samtools index -@ {params.samtools_threads} {output.dedup_mod_calls_sorted_bam}
 
 echo ""delete tmp files..""
-rm {output.mod_calls_bam} {output.mod_calls_sorted_bam} {output.mod_calls_sorted_bam.bai}
+rm {output.mod_calls_bam} {output.mod_calls_sorted_bam} {{output.mod_calls_sorted_bam.bai}}
         """
 
 # rule modkit:
