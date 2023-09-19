@@ -16,6 +16,12 @@ Step 1 (optional). convert .fast5 to .pod5 files
 a. edit `samples_fast5_2_pod5.yaml` with paths to fast5
 b. lunch program with `$ sh run_Snakefile_fast5_pod5.sh`
 
+Notes on pod5 conversion
+i. fast5 to pod5 is a looses conversion. Implies you can delete your original fast5 after conversion without loosing sleep.
+ii. `pod5 convert fast5` allows multi-threading with `--threads #` option
+iii. pod5 can be installed via `pip install pod5`
+iv. You don't need unecessary memory for pod5 conversion. 3GB is enough. You do need lots of cpus though for threading
+
 Step 2. modified base calling with dorado on .pod5 files and subsequent methylation extraction with modkit
 
 ## notes on run time

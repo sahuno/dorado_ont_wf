@@ -19,7 +19,7 @@ rule pod5:
     # conda: config["pod5_env"]
     shell:
         """ 
-pod5 convert from_fast5 {input} --output {output.out_pod5} --force-overwrite 2> {log}
+pod5 convert fast5 {input} --threads 64 --output {output.out_pod5} --force-overwrite 2> {log}
 pod5 view -t 64 {output.out_pod5} --output {output.out_stats} --force-overwrite
         """
 

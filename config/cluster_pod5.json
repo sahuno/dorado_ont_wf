@@ -19,9 +19,9 @@
 	},
 	"mod_bases" :
 	{
-	  	"queue" : "cpuqueue",
-		"mem": "64",
-		"threads" : 32,
-		"time" : "6:00"
+	  	"queue" : "gpuqueue",
+		"mem": "4",
+		"threads" : 42,
+		"time" : "1:00"
 	}
 }
