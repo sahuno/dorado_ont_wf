@@ -22,6 +22,9 @@
 	  	"queue" : "gpuqueue",
 		"mem": "4",
 		"threads" : 42,
-		"time" : "1:00"
+		"time" : "1:00",
+		"resources": {
+			"gpu": 1
+		}
 	}
 }

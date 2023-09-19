@@ -83,6 +83,8 @@ rule modkit:
         "logs/{rule}/{samples}/{samples}.log"
     shell:
         """ 
+mododule load modkit
+
 echo ""modkit pileup...""
 modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
 
@@ -101,7 +103,6 @@ modkit sample-probs --threads {params.modkit_threads} \
 --prefix {input.sample_name} --hist \
 --log-filepath {output.sample_prob_log} \
 {input}
-
         """
 
 
