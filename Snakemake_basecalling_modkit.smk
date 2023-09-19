@@ -58,27 +58,50 @@ echo ""delete tmp files..""
 rm {output.mod_calls_bam} {output.mod_calls_sorted_bam} {{output.mod_calls_sorted_bam.bai}}
         """
 
-# rule modkit:
-#     input:
-#         lambda wildcards: config["samples"][wildcards.samples]
-#     output:
-#     mod_calls_bam="results/{rule}/{samples}/{samples}_modBaseCalls.bam"
-#     mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam"
-#     mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam.bai"
-#     CpG_5mC_5hmC_merged_bed="results/{rule}/{samples}/{samples}_5mCG_5hmCG_merged.bed"
-#     CpG_5mC_bed="results/{rule}/{samples}/{samples}_5mCG.bed"
-#     params:
-#         dorado_script=config["dorado"],
-#         methyl_context="5mCG_5hmCG",
-#         basecall_model_file="/lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0",
-#         reference_genome=
-#     log:
-#         "logs/{rule}/{samples}/{samples}.log"
-#     shell:
-#         """ 
-#         source {params.dorado_script} {input} \
-#         {params.methyl_context} \
-#         {params.basecall_model_file} {params.reference_genome} \
-#         {output.modified_calls_bam} {output.modified_calls_sorted_bam} {output.modified_calls_sorted_bam_bai} \
-#         {output.CpG_5mC_5hmC_merged_bed} {output.CpG_5mC_bed} 2> {log}
-#         """
+rule modkit:
+    input:
+        "results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
+          sample_name=lambda wildcards: wildcards.samples
+    output:
+         summary_log="results/{rule}/{samples}/{samples}_modBase_summary.log",
+         summary_txt="results/{rule}/{samples}/{samples}_modBase_summary.txt",
+         sample_prob_log="results/{rule}/{samples}/{samples}_modBase_sample_prob.log",
+         sample_prob_tsv="results/{rule}/{samples}/{samples}_probabilities.tsv",
+         sample_prob_txt="results/{rule}/{samples}/{samples}_probabilities.txt",
+         sample_prob_thresh_tsv="results/{rule}/{samples}/{samples}_thresholds.tsv",
+         modpileup_combined="results/{rule}/{samples}/{samples}_modpileup_combined.bed",
+         modpileup_5mC="results/{rule}/{samples}/{samples}_modpileup_5mC.bed",
+         modpileup_5mC_log="results/{rule}/{samples}/{samples}_modpileup_5mC.log",
+         modpileup_combined_log="results/{rule}/{samples}/{samples}_modpileup_combined.log"
+
+    params:
+          reference_genome=config["ref_genome"],
+          modkit_threads=32,
+          modkit_prob_percentiles=0.1,
+          outdir= "results/{rule}/{samples}/"
+    log:
+        "logs/{rule}/{samples}/{samples}.log"
+    shell:
+        """ 
+echo ""modkit pileup...""
+modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
+
+echo ""modkit pileup...""
+# its either C or 5mC(its either unmethylated or 5mC) but what happens to 5hmC when their prob is redistributed? 
+modkit pileup --threads {params.modkit_threads} {input} {output.modpileup_5mC} --cpg --ref {params.reference_genome} --ignore h --log-filepath {output.modpileup_5mC_log}
+
+# its either C or Methylated(i don't care whether it's 5mC or 5hmC)
+modkit pileup --threads {params.modkit_threads} {input} {output.modpileup_combined} --cpg --ref {params.reference_genome} --combine-mods --log-filepath {output.modpileup_combined_log}
+
+
+echo ""find the prob filtering threshold...""
+modkit sample-probs --threads {params.modkit_threads} \
+--percentiles {params.modkit_prob_percentiles} \
+--out-dir {params.outdir} \
+--prefix {input.sample_name} --hist \
+--log-filepath {output.sample_prob_log} \
+{input}
+
+        """
+
+
