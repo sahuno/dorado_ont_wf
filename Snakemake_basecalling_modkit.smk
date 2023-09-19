@@ -1,5 +1,5 @@
 configfile: "config/config.yaml"
-configfile: "config/samples_basecalling_modkit.yaml"
+configfile: "config/samples.yaml"
 
 
 rule all:
