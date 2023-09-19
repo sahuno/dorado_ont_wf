@@ -32,7 +32,7 @@ module load samtools dorado gatk
 
 echo ""running dorado...""
 dorado basecaller {params.basecall_model_file} \
-/data/greenbaum/users/ahunos/TRI_EPI_DIVYA/pod5/D-A-1/ \
+{input} \
 --reference {params.reference_genome} \
 --modified-bases {params.methyl_context} --verbose > {output.mod_calls_bam}
 
