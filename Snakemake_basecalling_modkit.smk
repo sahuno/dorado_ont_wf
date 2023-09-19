@@ -22,7 +22,7 @@ rule mod_bases:
     params:
         methyl_context="5mCG_5hmCG",
         basecall_model_file="/lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0",
-        reference_genome=config["reference_genome"],
+        reference_genome=config["ref_genome"],
         samtools_threads=32
     log:
         "logs/{rule}/{samples}/{samples}.log"
