@@ -4,21 +4,21 @@ configfile: "config/samples_basecalling_modkit.yaml"
 
 rule all:
     input: 
-        expand("results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam", samples=config["samples"]),
-        expand("results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bai", samples=config["samples"]),
-        expand("results/{rule}/{samples}/{samples}_seq_summary.txt", samples=config["samples"])
+        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bam", samples=config["samples"]),
+        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bai", samples=config["samples"]),
+        expand("results/mod_bases/{samples}/{samples}_seq_summary.txt", samples=config["samples"])
 
 
 rule mod_bases:
     input:
         lambda wildcards: config["samples"][wildcards.samples]
     output:
-    mod_calls_bam="results/{rule}/{samples}/{samples}_modBaseCalls.bam",
-    mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam",
-    mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam.bai",
-    dedup_mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
-    dedup_mod_calls_sorted_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bai",
-    seq_summary="results/{rule}/{samples}/{samples}_seq_summary.txt"
+         mod_calls_bam="results/{rule}/{samples}/{samples}_modBaseCalls.bam",
+         mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam",
+         mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam.bai",
+         dedup_mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
+         dedup_mod_calls_sorted_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bai",
+         seq_summary="results/{rule}/{samples}/{samples}_seq_summary.txt"
     params:
         methyl_context="5mCG_5hmCG",
         basecall_model_file="/lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0",
