@@ -5,7 +5,7 @@ configfile: "config/samples.yaml"
 rule all:
     input: 
         expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bam", samples=config["samples"]),
-        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bai", samples=config["samples"]),
+        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bam.bai", samples=config["samples"]),
         expand("results/mod_bases/{samples}/{samples}_seq_summary.txt", samples=config["samples"])
 
 
@@ -17,7 +17,7 @@ rule mod_bases:
          mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam",
          mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam.bai",
          dedup_mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
-         dedup_mod_calls_sorted_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bai",
+         dedup_mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam.bai",
          seq_summary="results/{rule}/{samples}/{samples}_seq_summary.txt"
     params:
         methyl_context="5mCG_5hmCG",
@@ -46,10 +46,13 @@ echo ""seq summary..""
 dorado summary {output.mod_calls_sorted_bam} > {output.seq_summary}
 
 echo ""marking duplictes..""
-gatk MarkDuplicates --CREATE_INDEX true \
+gatk MarkDuplicates \
 --INPUT {output.mod_calls_sorted_bam} \
 --OUTPUT {output.dedup_mod_calls_sorted_bam} \
 --METRICS_FILE marked_dup_metrics.txt
+
+echo ""indexing..""
+samtools index -@ {params.samtools_threads} {output.dedup_mod_calls_sorted_bam}
 
 echo ""delete tmp files..""
 rm {output.mod_calls_bam} {output.mod_calls_sorted_bam} {output.mod_calls_sorted_bam.bai}
