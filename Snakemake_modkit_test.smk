@@ -9,7 +9,7 @@ rule all:
 
 rule modkit:
     input:
-        lambda wildcards: wildcards.samples,
+        input_files=lambda wildcards: config["samples"][wildcards.samples],
         sample_name=lambda wildcards: wildcards.samples
     output:
          summary_log="results/{rule}/{samples}/{samples}_modBase_summary.log",
@@ -34,7 +34,7 @@ rule modkit:
 module load modkit
 echo "{input.sample_name}"
 echo ""modkit pileup...""
-modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
+modkit summary --threads 12 --only-mapped {input.input_files} --log-filepath  {output.summary_log} > {output.summary_txt}
 
 # echo ""modkit pileup...""
 # # its either C or 5mC(its either unmethylated or 5mC) but what happens to 5hmC when their prob is redistributed? 
