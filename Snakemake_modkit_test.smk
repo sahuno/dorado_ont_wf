@@ -9,7 +9,7 @@ rule all:
 
 rule modkit:
     input:
-        "results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
+        lambda wildcards: wildcards.samples,
         sample_name=lambda wildcards: wildcards.samples
     output:
          summary_log="results/{rule}/{samples}/{samples}_modBase_summary.log",
