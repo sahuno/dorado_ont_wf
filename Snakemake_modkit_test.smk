@@ -31,23 +31,7 @@ rule modkit:
     shell:
         """ 
 module load modkit
-# echo "{input.sample_name}"
+
 echo ""modkit pileup...""
 modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
-
-# echo ""modkit pileup...""
-# # its either C or 5mC(its either unmethylated or 5mC) but what happens to 5hmC when their prob is redistributed? 
-# modkit pileup --threads {params.modkit_threads} {input} {output.modpileup_5mC} --cpg --ref {params.reference_genome} --ignore h --log-filepath {output.modpileup_5mC_log}
-
-# # its either C or Methylated(i don't care whether it's 5mC or 5hmC)
-# modkit pileup --threads {params.modkit_threads} {input} {output.modpileup_combined} --cpg --ref {params.reference_genome} --combine-mods --log-filepath {output.modpileup_combined_log}
-
-
-# echo ""find the prob filtering threshold...""
-# modkit sample-probs --threads {params.modkit_threads} \
-# --percentiles {params.modkit_prob_percentiles} \
-# --out-dir {params.outdir} \
-# --prefix {input.sample_name} --hist \
-# --log-filepath {output.sample_prob_log} \
-# {input}
         """
