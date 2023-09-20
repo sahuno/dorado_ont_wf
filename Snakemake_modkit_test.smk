@@ -33,5 +33,5 @@ rule modkit:
 module load modkit
 
 echo ""modkit pileup...""
-modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
+modkit summary --threads 12 --region "chr1" --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
         """
