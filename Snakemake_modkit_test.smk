@@ -4,8 +4,8 @@ configfile: "config/samples_sorted_bams.yaml"
 
 rule all:
     input: 
-        expand("results/{rule}/{samples}/{samples}_modBase_summary.log", samples=config["samples"]),
-        expand("results/{rule}/{samples}/{samples}_modBase_summary.txt", samples=config["samples"])    
+        expand("results/modkit/{samples}/{samples}_modBase_summary.log", samples=config["samples"]),
+        expand("results/modkit/{samples}/{samples}_modBase_summary.txt", samples=config["samples"])    
 
 rule modkit:
     input:
