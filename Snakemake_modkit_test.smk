@@ -9,8 +9,7 @@ rule all:
 
 rule modkit:
     input:
-        input_files=lambda wildcards: config["samples"][wildcards.samples],
-        sample_name=lambda wildcards: wildcards.samples
+        lambda wildcards: config["samples"][wildcards.samples]
     output:
          summary_log="results/{rule}/{samples}/{samples}_modBase_summary.log",
          summary_txt="results/{rule}/{samples}/{samples}_modBase_summary.txt"
@@ -32,7 +31,7 @@ rule modkit:
     shell:
         """ 
 module load modkit
-echo "{input.sample_name}"
+# echo "{input.sample_name}"
 echo ""modkit pileup...""
 modkit summary --threads 12 --only-mapped {input.input_files} --log-filepath  {output.summary_log} > {output.summary_txt}
 
