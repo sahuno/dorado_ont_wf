@@ -33,7 +33,7 @@ rule modkit:
 module load modkit
 # echo "{input.sample_name}"
 echo ""modkit pileup...""
-modkit summary --threads 12 --only-mapped {input.input_files} --log-filepath  {output.summary_log} > {output.summary_txt}
+modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
 
 # echo ""modkit pileup...""
 # # its either C or 5mC(its either unmethylated or 5mC) but what happens to 5hmC when their prob is redistributed? 
