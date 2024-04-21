@@ -3,14 +3,24 @@
 #Template made October 18th, 2019
 #Ha Lab: Fred Hutchinson Cancer Research Center
 
-__default__:
-    #partition: general #bsub is default
-    time: 1:00
-    mem: "rusage[mem=1000]"
-    nTasks: 16
-    jobName: {rule}
-    output: logs/cluster/{rule}.%J.out
-    errorFile: logs/cluster/{rule}.%J.err
+__default__:  # Settings that apply to all jobs unless overridden
+  mem: "4G"
+  time: "7-00:00:00"  # Days-Hours:Minutes:Seconds
+  partition: "componc_cpu" 
+  tasks: 64
+  nodes: 1
+#   jobName: {rule}
+#   output: logs/cluster/{rule}.%J.out
+#   errorFile: logs/cluster/{rule}.%J.err
+# __default__:
+#     partition: componc_cpu #bsub is default
+#     runtime: 1:00
+#     nodes: 1
+#     mem: 2G
+#     tasks: 16
+    # jobName: {rule}
+    # output: logs/cluster/{rule}.%J.out
+    # errorFile: logs/cluster/{rule}.%J.err
 
 # nameOfRule:
 #     time: "48:0:0"
