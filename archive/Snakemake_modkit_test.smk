@@ -1,6 +1,9 @@
-configfile: "config/config.yaml"
-configfile: "config/samples_sorted_bams.yaml"
+parent_dir = "/home/ahunos/apps/dorado_ont_wf/"
+configfile: parent_dir + "config/config.yaml"
+# configfile: "config/samples_sorted_bams.yaml"
+configfile: parent_dir + "config/samples_sorted_bams_iris.yaml"
 
+set_species = "mouse"
 
 rule all:
     input: 
@@ -22,16 +25,17 @@ rule modkit:
         #  modpileup_5mC_log="results/{rule}/{samples}/{samples}_modpileup_5mC.log",
         #  modpileup_combined_log="results/{rule}/{samples}/{samples}_modpileup_combined.log"
     params:
-          reference_genome=config["ref_genome"],
-          modkit_threads=32,
-          modkit_prob_percentiles=0.1,
-          outdir= "results/{rule}/{samples}/"
+        reference_genome=lambda wildcards: config["mm10"] if set_species == "mouse" else config["hg38"],
+        modkit_threads=4,
+        modkit_prob_percentiles=0.1,
+        outdir= "results/{rule}/{samples}/"
     log:
         "logs/{rule}/{samples}/{samples}.log"
+    conda: config["pod5_env"]
     shell:
         """ 
-module load modkit
-
 echo ""modkit pileup...""
-modkit summary --threads 12 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
+modkit summary --threads 4 --only-mapped {input} --log-filepath  {output.summary_log} > {output.summary_txt}
         """
+
+# snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_modkit_test.smk --cores 12 --forcerun --use-conda  -np #dry run with cores

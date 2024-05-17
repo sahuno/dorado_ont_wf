@@ -1,72 +1,39 @@
 parent_dir = "/home/ahunos/apps/dorado_ont_wf/"
 configfile: parent_dir + "config/config.yaml"
-# configfile: parent_dir +  "config/samples_pod5_spectrum.yaml"
 configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_pod5_dev.yaml"
-set_species = "human"
+
+set_species = "mouse"
 
 rule all:
     input: 
-        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam", samples=config["samples"]),
-        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam.csi", samples=config["samples"]),
-        expand("results/dorado_summary/{samples}/{samples}_seq_summary.txt", samples=config["samples"]),
-        expand("results/mark_duplicates/{samples}/{samples}_modBaseCalls_sorted_dup.bam", samples=config["samples"]),
-        expand("results/mark_duplicates/{samples}/{samples}_modBaseCalls_sorted_dup.bai", samples=config["samples"]),
-        expand("results/mark_duplicates/{samples}/{samples}_marked_dup_metrics.txt", samples=config["samples"])
+        expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam", samples=config["samples"])
+        # expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam.csi", samples=config["samples"])
+        # expand("results/mod_bases/{samples}/{samples}_modBaseCalls_sorted_dedup.bam", samples=config["samples"]),
+        # expand("results/mod_bases/{samples}/{samples}_seq_summary.txt", samples=config["samples"])
 
 
 rule mod_bases:
     input:
         lambda wildcards: config["samples"][wildcards.samples]
     output:
-         mod_calls_sorted_bam="results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam",
-         mod_calls_sorted_bam_csi="results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam.csi"
+         mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam",
+        #  mod_calls_sorted_bam_csi="results/{rule}/{samples}/{samples}_modBaseCalls_sorted.bam.csi",
         #  dedup_mod_calls_sorted_bam="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam",
         #  dedup_mod_calls_sorted_bam_bai="results/{rule}/{samples}/{samples}_modBaseCalls_sorted_dedup.bam.bai",
-        #  seq_summary="results/mod_bases/{samples}/{samples}_seq_summary.txt"
+        #  seq_summary="results/{rule}/{samples}/{samples}_seq_summary.txt"
     params:
         methyl_context="5mCG_5hmCG",
+        # basecall_model_file="/lila/data/greenbaum/users/ahunos/refs/dna_r10.4.1_e8.2_400bps_sup@v4.1.0",
         reference_genome=lambda wildcards: config["mm10"] if set_species == "mouse" else config["hg38"],
         samtools_threads=32,
         device = "cuda:all"
     log:
-        "logs/mod_bases/{samples}/{samples}.log"
+        "logs/{rule}/{samples}/{samples}.log"
     shell:
         """ 
-        dorado basecaller sup,5mCG_5hmCG@latest {input} --device {params.device} --emit-sam --reference {params.reference_genome} --verbose | samtools sort -o {output.mod_calls_sorted_bam} --write-index  2> {log}
+        # Try the first basecalling model
+        dorado basecaller sup,5mCG_5hmCG@latest {input} --device {params.device} --emit-sam --reference {params.reference_genome} --verbose > {output.mod_calls_sorted_bam} 2> {log}      
         """
-
-rule dorado_summary:
-    input:
-        "results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam"
-    output:
-         seq_summary="results/dorado_summary/{samples}/{samples}_seq_summary.txt"
-    log:
-        "logs/dorado_summary/{samples}/{samples}.log"
-    shell:
-        """ 
-        dorado summary {input} --verbose > {output.seq_summary} 2> {log}
-        """
-
-        
-rule mark_duplicates:
-    input:
-        bams="results/mod_bases/{samples}/{samples}_modBaseCalls_sorted.bam"
-    output:
-         markdup_bam="results/mark_duplicates/{samples}/{samples}_modBaseCalls_sorted_dup.bam",
-         markdup_bam_bai="results/mark_duplicates/{samples}/{samples}_modBaseCalls_sorted_dup.bai",
-         markdup_stats="results/mark_duplicates/{samples}/{samples}_marked_dup_metrics.txt"
-    log:
-        "logs/mark_duplicates/{samples}/{samples}.log"
-    shell:
-        """ 
-        module load java
-        gatk MarkDuplicates --INPUT {input.bams} --OUTPUT {output.markdup_bam} --METRICS_FILE {output.markdup_stats} --CREATE_INDEX true 2> {log}
-        """
-
-
-# gatk --java-options "-Xmx24G" MarkDuplicates --INPUT results/mod_bases/044N_v14_minimal/044N_v14_minimal_modBaseCalls_sorted.bam --OUTPUT 044N_v14_minimal_modBaseCalls_sorted_test.bam --METRICS_FILE 044N_v14_minimal_marked_dup_metrics_test.txt --CREATE_INDEX true
-
-
 
 # dorado basecaller sup,5mCG_5hmCG@latest {input} --device \"cuda:all\" --emit-sam --reference {params.reference_genome} --verbose | samtools sort -o {output.mod_calls_sorted_bam} --write-index 2> {log}
 
@@ -164,8 +131,7 @@ rule mark_duplicates:
 
 # snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --workflow-profile /home/ahunos/apps/dorado_ont_wf/config/profile_slurm.yaml --jobs 10 --cores all
 
-# snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --executor slurm --default-resources slurm_partition=componc_gpu slurm_account=greenbab runtime=60 slurm_extra="'--gres gpu:4'" mem_mb_per_cpu=24800 cpus_per_task=24 --jobs 10 --cores all --keep-going --forceall --latency-wait 60 --restart-times 2 -np
+# snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit_dev.smk --executor slurm --default-resources slurm_partition=componc_gpu slurm_account=greenbab runtime=360 slurm_extra="'--gres gpu:4'" mem_mb_per_cpu=24800 cpus_per_task=24 --jobs 10 --cores all --keep-going --forceall --latency-wait 60 --restart-times 2
 
 
-# module load java
-# gatk MarkDuplicates --INPUT /data1/greenbab/projects/methyl_benchmark_spectrum/data/dev_test/results/mod_bases/044N_v14_minimal/044N_v14_minimal_modBaseCalls_sorted.bam --OUTPUT 044N_v14_minimal_modBaseCalls_sorted_dup.bam --METRICS_FILE 044N_v14_minimal_marked_dup_metrics.txt --CREATE_INDEX true 2> 044N_v14_minimal.log
+# pod5 view /data1/greenbab/projects/methyl_benchmark_spectrum/data/raw/pod5/009T1/results/pod5/009T1/009T1.pod5

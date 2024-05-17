@@ -33,9 +33,10 @@ you dont need lots of memory for pod5 conversion. Max mem=4GB used. Rather incre
 sh run_Snakefile_fast5_pod5.sh Snakemake_basecalling_modkit.smk config/cluster_pod5.json
 
 
-
-
-
+#other snakemake piplines
+`methylation_calling_modkit.smk` - methylation calling with modkit only
+`split_reads.smk` - split pod files by sample_rate or channels
+`Snakemake_basecalling_modkit.smk` - end to end basecalling and methylation calling with modkit
 
 
 

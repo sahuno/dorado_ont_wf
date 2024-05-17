@@ -4,10 +4,10 @@
 #Ha Lab: Fred Hutchinson Cancer Research Center
 
 __default__:  # Settings that apply to all jobs unless overridden
-  mem: "4G"
-  time: "7-00:00:00"  # Days-Hours:Minutes:Seconds
-  partition: "componc_cpu" 
-  tasks: 64
+  mem: "100G"
+  time: "1-00:00:00"  # Days-Hours:Minutes:Seconds
+  partition: "componc_gpu" 
+  tasks: 24
   nodes: 1
 #   jobName: {rule}
 #   output: logs/cluster/{rule}.%J.out
@@ -26,3 +26,4 @@ __default__:  # Settings that apply to all jobs unless overridden
 #     time: "48:0:0"
 #     mem: 12G
 #     ncpus: 4
+

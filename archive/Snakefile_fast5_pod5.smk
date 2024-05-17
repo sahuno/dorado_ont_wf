@@ -20,10 +20,10 @@ rule pod5:
     conda: config["ONT_conda_env"]
     shell:
         """ 
-pod5 convert fast5 {input} --threads 64 --output {output.out_pod5} --force-overwrite 2> {log}
-pod5 view -t 64 {output.out_pod5} --output {output.out_stats} --force-overwrite
+POD5_DEBUG=1 pod5 convert fast5 {input} --threads 64 --output {output.out_pod5} --strict --force-overwrite 2> {log}
+POD5_DEBUG=1 pod5 view -t 64 {output.out_pod5} --output {output.out_stats} --force-overwrite
         """
-
+# POD5_DEBUG=1 pod5 convert fast5 /data1/greenbab/projects/methyl_benchmark_spectrum/data/raw/fast5/004T_v14/fast5_pass/ --threads 64 --output 044T_v14.pod5 --strict --force-overwrite 2> 044T_v14.log
 # this runs ok
 # snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakefile_fast5_pod5.smk --cores 12 --forcerun -np
 # nohup snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakefile_fast5_pod5.smk --latency-wait 60 --restart-times 2 --keep-going --forceall --cluster "bsub -J {rule} -R "rusage[mem=32]" -W 5:00 -n 12 -o logs/cluster/{rule}.%J.out -e logs/cluster/{rule}.%J.err" -j 3 &
