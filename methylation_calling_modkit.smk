@@ -4,7 +4,7 @@ configfile: parent_dir + "config/samples_sorted_bams_iris.yaml"
 
 #/home/ahunos/apps/dorado_ont_wf/config/samples_sorted_bams_iris.yaml
 
-set_species = "mouse"
+set_species = "human"
 
 rule all:
     input: 
