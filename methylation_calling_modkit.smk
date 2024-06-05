@@ -1,7 +1,8 @@
 parent_dir = "/home/ahunos/apps/dorado_ont_wf/"
 configfile: parent_dir + "config/config.yaml"
-configfile: parent_dir + "config/samples_sorted_bams_iris.yaml"
+configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_sorted_bams_spect_lilac.yaml"
 
+# configfile: parent_dir + "config/samples_sorted_bams_iris.yaml"
 #/home/ahunos/apps/dorado_ont_wf/config/samples_sorted_bams_iris.yaml
 
 set_species = "human"
@@ -65,10 +66,33 @@ modkit sample-probs --threads {params.modkit_threads} \
 --prefix {wildcards.samples} --hist \
 --log-filepath {output.sample_prob_log} \
 {input} 2> {log}
+
+###########5mc & 5hmc, bedgraph outputs ############
+modkit pileup --threads {params.modkit_threads} --bedgraph {input} {params.outdir} \
+--prefix {wildcards.samples} --cpg --combine-mods --ref {params.reference_genome}
+
+#these files will be generated
+# prefix_C_CG0_positive.bedgraph
+# prefix_C_CG0_negative.bedgraph
+
+###########5mc & 5hmc, bedgraph outputs############
+modkit pileup --threads {params.modkit_threads} --bedgraph {input} {params.outdir} \
+--prefix {wildcards.samples} --cpg --ref {params.reference_genome}
+
+#these files will be generated
+# prefix_h_CG0_negative.bedgraph
+# prefix_m_CG0_negative.bedgraph
+# prefix_h_CG0_positive.bedgraph
+# prefix_m_CG0_positive.bedgraph
+
 echo ""done modkit sample-probs...""
         """
 
 # snakemake -s /home/ahunos/apps/dorado_ont_wf/methylation_calling_modkit.smk --cores 12 --forcerun --use-conda  -np #dry run with cores
+
+#run with profile file 
+# snakemake -s /home/ahunos/apps/dorado_ont_wf/methylation_calling_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall -np
+
 
 #run with slurm
 # snakemake -s /home/ahunos/apps/dorado_ont_wf/methylation_calling_modkit.smk  --latency-wait 60 --restart-times 2 --keep-going --forceall --use-conda \

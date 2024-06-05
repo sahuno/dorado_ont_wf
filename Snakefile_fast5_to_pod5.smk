@@ -1,12 +1,14 @@
+# include: "/home/ahunos/apps/dorado_ont_wf/Snakefile_pod5inspect.smk"
 configfile: "/home/ahunos/apps/dorado_ont_wf/config/config.yaml"
-configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_fast5_2_pod5.yaml"
+configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_spectrum009N.yaml"
 #$ conda env export -n pod5 > /lila/data/greenbaum/users/ahunos/apps/dorado_ont_wf/config/pod5.yaml
 #/home/ahunos/apps/dorado_ont_wf/config/samples_fast5_2_pod5.yaml
 
 rule all:
     input: 
         expand("results/pod5/{samples}/{samples}.pod5", samples=config["samples"]),
-        expand("results/pod5stats/{samples}/{samples}_pod5_stats.tsv", samples=config["samples"])
+        expand("results/pod5stats/{samples}/{samples}_pod5_stats.tsv", samples=config["samples"]),
+        expand("results/pod5_inspect_debug/{samples}/{samples}_debug_pod5.txt", samples=config["samples"])
 
 rule pod5:
     input:
@@ -30,12 +32,23 @@ rule pod5stats:
     shell:
        "POD5_DEBUG=1 pod5 view -t 4 {input} --output {output.out_stats} --force-overwrite 2> {log}"
 
+rule pod5_inspect_debug:
+    input:
+        "results/pod5/{samples}/{samples}.pod5"
+    output:
+        "results/pod5_inspect_debug/{samples}/{samples}_debug_pod5.txt"
+    log:
+      "logs/pod5_inspect_debug/{samples}/{samples}.log"
+    conda: config["pod5_env"]
+    shell:
+       "pod5 inspect debug {input} > {output} 2> {log}"
 
 ### add pod5 inspect
 #pod5 inspect debug D-S-1.pod5 > D-S-1_pod5_debug.txt
 
 
 
+## snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakefile_fast5_to_pod5.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall -np --quiet
 
 # this runs ok
 # snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakefile_fast5_to_pod5.smk --cores 12 --forcerun --use-conda  -np #dry run with cores

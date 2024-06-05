@@ -1,5 +1,5 @@
 configfile: "/home/ahunos/apps/dorado_ont_wf/config/config.yaml"
-# configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_fast5_2_pod5.yaml"
+configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_fast5_2_pod5.yaml"
 #$ conda env export -n pod5 > /lila/data/greenbaum/users/ahunos/apps/dorado_ont_wf/config/pod5.yaml
 #/home/ahunos/apps/dorado_ont_wf/config/samples_fast5_2_pod5.yaml
 
