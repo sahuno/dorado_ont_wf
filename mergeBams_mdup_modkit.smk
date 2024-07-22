@@ -1,7 +1,16 @@
-parent_dir = "/home/ahunos/apps/dorado_ont_wf/"
+parent_dir = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/"
 configfile: parent_dir + "config/config.yaml"
-configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_mergeBam_modkit.yaml"
-set_species = "human"
+# configfile: parent_dir + "/config/samples_mergeBam_modkit.yaml" #human samples
+configfile: parent_dir + "/config/samples_mergeBam_modkit_triEpigeneticsMouse.yaml" #mouse samples
+set_species = "mouse"
+
+#mouse directory
+#$ /data1/greenbab/projects/triplicates_epigenetics_diyva/DNA/preprocessed/mergedbams_modkit
+
+#launch the pipeline by runnign the command below
+# snakemake -s /data1/greenbab/users/ahunos/apps/dorado_ont_wf/mergeBams_mdup_modkit.smk --cores 5 -np
+##2.  on cluster
+#snakemake -s /data1/greenbab/users/ahunos/apps/dorado_ont_wf/mergeBams_mdup_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall -np
 
 rule all:
     input: 
@@ -21,8 +30,10 @@ rule all:
         expand("results/modkit/{samples}/{samples}_probabilities.txt", samples=config["samples"]), 
         expand("results/modkit/{samples}/{samples}_thresholds.tsv", samples=config["samples"]) 
 
-
-
+print(f"")
+print(f"config['samples']\n {config["samples"]}")
+# print(f"\nsamples\n {samples}")
+# print(f"\nsamples\n {wildcards.samples}")
 
 rule merge_bams:
     input:
@@ -133,4 +144,4 @@ modkit pileup --threads {params.modkit_threads} --bedgraph {input} {params.outdi
 
 echo ""done modkit sample-probs...""
         """
-# snakemake -s /home/ahunos/apps/dorado_ont_wf/mergeBams_mdup_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall -np
+# snakemake -s /data1/greenbab/users/ahunos/apps/dorado_ont_wf/mergeBams_mdup_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall -np

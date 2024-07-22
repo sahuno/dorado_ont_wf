@@ -1,16 +1,18 @@
-parent_dir = "/home/ahunos/apps/dorado_ont_wf/"
+parent_dir = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/"
 configfile: parent_dir + "config/config.yaml"
-configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_spectrum009N.yaml"
+# configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_spectrum009N.yaml"
+configfile: "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/config/samples_split_sample_rates_pod5_triEpi.yaml"
+
 # configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_pod5_dev.yaml"
 # configfile: "/home/ahunos/apps/dorado_ont_wf/config/samples_pod5_dev.yaml"
 
 
 #To run with profile file 
-#snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs unlimited --cores all 
-# snakemake -s /home/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall --latency-wait 60 --restart-times 2 -np
+#snakemake -s /data1/greenbab/users/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs unlimited --cores all 
+# snakemake -s /data1/greenbab/users/ahunos/apps/dorado_ont_wf/Snakemake_basecalling_modkit.smk --workflow-profile /data1/greenbab/users/ahunos/apps/configs/snakemake/slurm --jobs 10 --cores all --use-conda --keep-going --forceall --latency-wait 60 --restart-times 2 -np
 
 
-set_species = "human"
+set_species = "mouse"
 print(config["samples"])
 #less /home/ahunos/apps/dorado_ont_wf/config/samples_pod5_spectrum.yaml
 

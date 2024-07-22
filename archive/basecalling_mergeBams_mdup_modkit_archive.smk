@@ -1,6 +1,8 @@
 #purpose: sample sequenced with differeent flowcells need basecalling done separately and merged. then duplicates marked and modified bases called
 import yaml
-sample_yaml_path = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/config/samples_multiple_flowcells_basecalling2modkit.yaml" #real
+# sample_yaml_path = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/config/samples_spectrum009N.yaml" #real samples
+sample_yaml_path = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/config/samples_mergeBam_modkit.yaml" #real
+# sample_yaml_path = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/config/samples_multiple_flowcells.yaml"
 
 parent_dir = "/data1/greenbab/users/ahunos/apps/dorado_ont_wf/"
 configfile: parent_dir + "config/config.yaml"
