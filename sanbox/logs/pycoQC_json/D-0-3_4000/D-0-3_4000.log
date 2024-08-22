@@ -1,0 +1,25 @@
+Checking arguments values
+Check input data files
+Parse data files
+Merge data
+Cleaning data
+	Discarding lines containing NA values
+		0 reads discarded
+	Filtering out zero length reads
+		0 reads discarded
+	Sorting run IDs by decreasing throughput
+		Run-id order ['55a15f1bb4344d56740b8b63c789cdb1a9b11578']
+	Reordering runids
+		Processing reads with Run_ID 55a15f1bb4344d56740b8b63c789cdb1a9b11578 / time offset: 0
+	Cleaning up low frequency barcodes
+		0 reads with low frequency barcode unset
+	Cast value to appropriate type
+	Reindexing dataframe by read_ids
+		5,812,614 Final valid reads
+Loading plotting interface
+	Found 5,812,614 total reads
+	Found 5,810,979 pass reads (qual >= 7.0 and length >= 0)
+Generating JSON report
+	Running summary_stats_dict method
+	Compute overall summary statistics
+	Writing to JSON file
