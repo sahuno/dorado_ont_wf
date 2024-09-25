@@ -1,0 +1,73 @@
+Checking arguments values
+Check input data files
+Parse data files
+Merge data
+Cleaning data
+	Discarding lines containing NA values
+		0 reads discarded
+	Filtering out zero length reads
+		0 reads discarded
+	Sorting run IDs by decreasing throughput
+		Run-id order ['b60447cfd749f40310384885ebf4e7d58f9510d7']
+	Reordering runids
+		Processing reads with Run_ID b60447cfd749f40310384885ebf4e7d58f9510d7 / time offset: 0
+	Cleaning up low frequency barcodes
+		0 reads with low frequency barcode unset
+	Cast value to appropriate type
+	Reindexing dataframe by read_ids
+		4,061,386 Final valid reads
+Loading plotting interface
+	Found 4,061,386 total reads
+	Found 4,059,227 pass reads (qual >= 7.0 and length >= 0)
+Generating HTML report
+	Parsing html config file
+	Running method run_summary
+		Computing plot
+	Running method basecall_summary
+		Computing plot
+	Running method alignment_summary
+		Computing plot
+	Running method read_len_1D
+		Computing plot
+	Running method align_len_1D
+		Computing plot
+	Running method read_qual_1D
+		Computing plot
+	Running method identity_freq_1D
+		Computing plot
+	Running method read_len_read_qual_2D
+		Computing plot
+	Running method read_len_align_len_2D
+		Computing plot
+	Running method align_len_identity_freq_2D
+		Computing plot
+	Running method read_qual_identity_freq_2D
+		Computing plot
+	Running method output_over_time
+		Computing plot
+	Running method read_len_over_time
+		Computing plot
+	Running method read_qual_over_time
+		Computing plot
+	Running method align_len_over_time
+		Computing plot
+	Running method identity_freq_over_time
+		Computing plot
+	Running method barcode_counts
+		Computing plot
+	Running method channels_activity
+		Computing plot
+		channels_activity is not a valid plotting method
+		module 'numpy' has no attribute 'int'.
+`np.int` was a deprecated alias for the builtin `int`. To avoid this error in existing code, use `int` by itself. Doing this will not modify any behavior and is safe. When replacing `np.int`, you may wish to use e.g. `np.int64` or `np.int32` to specify the precision. If you wish to review your current use, check the release note link for additional information.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+	Running method alignment_reads_status
+		Computing plot
+	Running method alignment_rate
+		Computing plot
+	Running method alignment_coverage
+		Computing plot
+	Loading HTML template
+	Rendering plots in d3js
+	Writing to HTML file

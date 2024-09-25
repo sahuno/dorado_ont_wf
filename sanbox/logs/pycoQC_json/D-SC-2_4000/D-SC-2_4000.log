@@ -1,3 +1,25 @@
 Checking arguments values
 Check input data files
 Parse data files
+Merge data
+Cleaning data
+	Discarding lines containing NA values
+		0 reads discarded
+	Filtering out zero length reads
+		0 reads discarded
+	Sorting run IDs by decreasing throughput
+		Run-id order ['4263a2903248676f72b2307bbd251dcda37aebfc']
+	Reordering runids
+		Processing reads with Run_ID 4263a2903248676f72b2307bbd251dcda37aebfc / time offset: 0
+	Cleaning up low frequency barcodes
+		0 reads with low frequency barcode unset
+	Cast value to appropriate type
+	Reindexing dataframe by read_ids
+		8,194,310 Final valid reads
+Loading plotting interface
+	Found 8,194,310 total reads
+	Found 8,189,393 pass reads (qual >= 7.0 and length >= 0)
+Generating JSON report
+	Running summary_stats_dict method
+	Compute overall summary statistics
+	Writing to JSON file
